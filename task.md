@@ -22,3 +22,8 @@
 ## Verification
 - [x] Local browser verification
 - [x] User visual confirmation
+
+## Deployment
+- [x] Git initialization and commit
+- [x] Push to GitHub (Darari-nu/character-archive)
+- [x] Deploy to Vercel (character-archive)

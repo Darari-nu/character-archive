@@ -34,3 +34,8 @@ The camera is positioned (z=40) to show the entire spiral structure.
 ### Character Detail Overlay
 Clicking a character shows their profile.
 ![Character Detail](/Users/watanabehidetaka/.gemini/antigravity/brain/d8c9eb4d-93f9-4da8-97df-eaa5edcf746f/japanese_text_check_1764417154603.webp)
+
+## Deployment
+
+- **GitHub Repository**: [Darari-nu/character-archive](https://github.com/Darari-nu/character-archive)
+- **Live Demo**: [Vercel Deployment](https://darari-character-archive.vercel.app)
