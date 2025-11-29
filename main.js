@@ -146,9 +146,31 @@ for (let i = 0; i < PHOTO_COUNT; i++) {
 }
 
 // Event Listeners
+// Event Listeners
 window.addEventListener('pointermove', onPointerMove);
-window.addEventListener('click', onClick);
 window.addEventListener('resize', onResize);
+
+// Custom Tap Detection
+let touchStartTime = 0;
+let startX = 0;
+let startY = 0;
+const TAP_THRESHOLD = 200; // ms
+const MOVE_THRESHOLD = 5; // pixels
+
+window.addEventListener('pointerdown', (event) => {
+    touchStartTime = Date.now();
+    startX = event.clientX;
+    startY = event.clientY;
+});
+
+window.addEventListener('pointerup', (event) => {
+    const touchDuration = Date.now() - touchStartTime;
+    const dist = Math.hypot(event.clientX - startX, event.clientY - startY);
+
+    if (touchDuration < TAP_THRESHOLD && dist < MOVE_THRESHOLD) {
+        onClick(event);
+    }
+});
 
 function onPointerMove(event) {
     pointer.x = (event.clientX / window.innerWidth) * 2 - 1;

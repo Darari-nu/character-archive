@@ -1,42 +1,28 @@
-# Three.js Photo Gallery Implementation Plan
+# Mobile Interaction Fix Plan
 
-## Goal Description
-Create a 3D photo gallery using Three.js where photos float in a spiral/circular formation with a "drone-like" floating animation. The background will use an environment map derived from a provided image. All images will be converted to lightweight JPEGs for performance.
-
-**Update**: Transform into an "Anime Character Introduction" site.
-- Start with a wider camera shot.
-- Click on characters to show details (Name, Features).
-- Minimalist, cool design with nice fonts.
-
-## User Review Required
-- **Character Data**: I will generate 30 unique names and descriptions for the characters.
-- **Design**: Minimalist, dark/sleek aesthetic suitable for anime.
+## Goal
+Fix the issue where clicking/tapping on characters does not work on mobile devices. This is likely due to `OrbitControls` interpreting taps as slight drags, or touch events not firing `click` as expected.
 
 ## Proposed Changes
 
-### [index.html](file:///Users/watanabehidetaka/Claudecode/251129＿環境マップテスト/index.html)
-- Add a UI overlay container for character details.
-- Import a Google Font (e.g., 'Orbitron' or 'Noto Sans JP') for the "cool" look.
+### 1. CSS (`style.css`)
+- Add `touch-action: none;` to the canvas to prevent browser default gestures (scrolling/zooming) which can interfere with 3D controls.
 
-### [style.css](file:///Users/watanabehidetaka/Claudecode/251129＿環境マップテスト/style.css)
-- Style the overlay to be hidden by default, appearing on click.
-- Use glassmorphism or simple dark semi-transparent backgrounds.
-- Typography updates for the anime aesthetic.
-
-### [main.js](file:///Users/watanabehidetaka/Claudecode/251129＿環境マップテスト/main.js)
-- **Camera**: Move initial position further back (e.g., z=30).
-- **Data**: Add an array of character objects `{ name, description }`.
-- **Interaction**:
-    - Add `Raycaster` and `pointer` vector.
-    - Listen for `click` events.
-    - On click, identify the mesh, retrieve its ID/index, look up data, and update the UI.
-    - Optional: Smoothly look at or zoom to the selected character? (Maybe keep it simple first as requested: "show introduction").
+### 2. JavaScript (`main.js`)
+- Remove the simple `click` event listener.
+- Implement a "Tap Detection" system using `pointerdown` and `pointerup`.
+    - Record timestamp and coordinates on `pointerdown`.
+    - On `pointerup`, check if the duration is short (< 200ms) and movement is minimal (< 5px).
+    - If it qualifies as a tap, trigger the raycasting and selection logic.
+- Ensure `pointer` coordinates are correctly calculated for the raycaster.
 
 ## Verification Plan
 
+### Automated Verification
+- Use the browser subagent to emulate a mobile device (iPhone X).
+- Navigate to the local server.
+- Perform a "tap" (click with 0 delay and 0 movement).
+- Verify that the character details overlay appears.
+
 ### Manual Verification
-- Run `npm run dev`.
-- Verify initial camera position is wider.
-- Click on various photos.
-- Confirm the UI appears with correct (dummy) data.
-- Verify the design feels "minimalist and cool".
+- User to test on their actual smartphone.

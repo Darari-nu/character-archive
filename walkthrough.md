@@ -38,4 +38,4 @@ Clicking a character shows their profile.
 ## Deployment
 
 - **GitHub Repository**: [Darari-nu/character-archive](https://github.com/Darari-nu/character-archive)
-- **Live Demo**: [Vercel Deployment](https://darari-character-archive.vercel.app)
+- **Live Demo**: [Vercel Deployment](https://darari-character-archive.vercel.app/)

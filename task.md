@@ -27,3 +27,6 @@
 - [x] Git initialization and commit
 - [x] Push to GitHub (Darari-nu/character-archive)
 - [x] Deploy to Vercel (character-archive)
+
+## Bug Fixes
+- [ ] Fix click interaction on mobile devices
