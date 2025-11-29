@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #050505;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+#loading.hidden {
+    opacity: 0;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#title-overlay {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #00ffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#title-overlay h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+#title-overlay p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    color: #ccc;
+    letter-spacing: 0.05em;
+}
+
+#character-info {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 300px;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #00ffff;
+    padding: 1.5rem;
+    pointer-events: auto;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#character-info.hidden {
+    transform: translateX(20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#char-name {
+    margin: 0 0 1rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #00ffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+#char-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+#close-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #aaa;
+    padding: 0.5rem 1rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+#close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: white;
+}
